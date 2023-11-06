@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一版UI</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        .all{
+            width: 1000px;
+            padding-top: 10px;
+            margin:auto;
+            background-color: aliceblue;
+            border: 1px solid grey;
+        }
+        .header{
+            display: flex;
+            padding: 6px 10px;
+
+            background-color: rgb(100, 100, 220);
+        }
+        .header h1{
+            width: 100%;
+            color: #ffffff;
+            font-size: xx-large;
+            font-weight: bolder;
+            line-height: 52px;
+        }
+        .header nav{
+            text-align: right;
+            width: 100%;
+        }
+        .header nav a{
+            color: aliceblue;
+            display: inline-block;
+            line-height: 52px;
+            text-decoration: none;
+            padding: 0 10px;;
+        }
+        .header nav a:hover{
+            background-color: blue;
+            color: aliceblue;
+            display: inline-block;
+            line-height: 52px;
+            text-decoration: none;
+            padding: 0 10px;;
+        }
+        .banner{
+            width: 100%;
+        }
+        .banner img{
+            width: 100%;
+        }
+        .content p{
+            color:black;
+            font-size: x-large;
+            text-align: center;
+        }
+        .wrap{
+            width: 960px;
+            display: flex;
+            margin: 10px auto 10px auto;
+        }
+        .wrap a{
+            text-decoration: none;
+        }
+        .wrap .item{
+            font-size: x-large;
+            color: #fff;
+            width: 300px;
+            height: 200px;
+            margin: 0 10px;
+            text-align: center;
+            line-height: 200px;
+            background-color: rgb(93, 76, 223);
+            border: 2px solid blue;
+            border-radius: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="header">
+            <h1>海大全興書院-自習室預約系統</h1>
+            <nav>
+                <a href="#">首頁</a>
+                <a href="#">使用說明</a>
+                <a href="#">意見信箱</a>
+                <a href="#">海大圖資處首頁</a>
+            </nav>
+        </div>
+        <div class="banner">
+            <img src="https://ga.ntou.edu.tw/var/file/15/1015/randimg/mobileadv_1957_2914262_12033.jpg" alt="全興書院照片">
+        </div> 
+        <div class="content">
+            <p>現在時間2023-10-24</p>
+        </div>
+        <div class="wrap">
+            <a href="#"><div class="item">線上預約</div></a>
+            <a href="#"><div class="item">查詢/取消</div></a>
+            <a href="#"><div class="item">即時座位資訊</div></a>
+        </div>
+    </div>
+</body>
+</html>
