@@ -7,6 +7,7 @@
     <title>即時座位表</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="seat_css.css">
     <style>
         header{
             background-color: #f8f9fa;
@@ -23,6 +24,7 @@
             width: 40px;
             height: 40px;
         }
+        
     </style>
     <script  language="JavaScript">
         function ShowTime(){
@@ -71,7 +73,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-3">
+            <div class="col-12 col-md-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">功能選單</a>
@@ -87,30 +89,792 @@
                     </li>
                   </ul>
             </div>
-            <div class="col-9">
-                <div id="showbox" style="text-align: center;"></div>
-                <div>
-                    <img src="https://li.ntou.edu.tw/var/file/29/1029/img/1286/787763965.png" alt="" style="width: 100%;">
+            <div class="col-12 col-md-9" >
+                <div id="showbox" style="margin-left:30px;"></div>
+                <div class="seat-info">
+                    <img class="seat_background" src="/資料區/座位背景圖.png" alt="座位背景圖">
+                    <div class="group4 g1-4">
+                      <a href="#" class="seat_controll seat1">
+                        <span>01</span>
+                      </a>
+                      <a href="#" class="seat_controll seat2">
+                        <span>02</span>
+                      </a>
+                      <a href="#" class="seat_controll seat3">
+                        <span>03</span>
+                      </a>
+                      <a href="#" class="seat_controll seat4">
+                        <span>04</span>
+                      </a>
+                    </div>
+                    <div class="group4 g5-8">
+                      <a href="#" class="seat_controll seat5">
+                        <span>05</span>
+                      </a>
+                      <a href="#" class="seat_controll seat6">
+                        <span>06</span>
+                      </a>
+                      <a href="#" class="seat_controll seat7">
+                        <span>07</span>
+                      </a>
+                      <a href="#" class="seat_controll seat8">
+                        <span>08</span>
+                      </a>
+                    </div>
+                    <div class="group4 g9-12">
+                      <a href="#" class="seat_controll seat9">
+                        <span>09</span>
+                      </a>
+                      <a href="#" class="seat_controll seat10">
+                        <span>10</span>
+                      </a>
+                      <a href="#" class="seat_controll seat11">
+                        <span>11</span>
+                      </a>
+                      <a href="#" class="seat_controll seat12">
+                        <span>12</span>
+                      </a>
+                    </div>
+                    <div class="group4 g13-16">
+                      <a href="#" class="seat_controll seat13">
+                        <span>13</span>
+                      </a>
+                      <a href="#" class="seat_controll seat14">
+                        <span>14</span>
+                      </a>
+                      <a href="#" class="seat_controll seat15">
+                        <span>15</span>
+                      </a>
+                      <a href="#" class="seat_controll seat16">
+                        <span>16</span>
+                      </a>
+                    </div>
+                    <div class="group4 g17-20">
+                      <a href="#" class="seat_controll seat17">
+                        <span>17</span>
+                      </a>
+                      <a href="#" class="seat_controll seat18">
+                        <span>18</span>
+                      </a>
+                      <a href="#" class="seat_controll seat19">
+                        <span>19</span>
+                      </a>
+                      <a href="#" class="seat_controll seat20">
+                        <span>20</span>
+                      </a>
+                    </div>
+                    <div class="group4 g21-24">
+                      <a href="#" class="seat_controll seat21">
+                        <span>21</span>
+                      </a>
+                      <a href="#" class="seat_controll seat22">
+                        <span>22</span>
+                      </a>
+                      <a href="#" class="seat_controll seat23">
+                        <span>23</span>
+                      </a>
+                      <a href="#" class="seat_controll seat24">
+                        <span>24</span>
+                      </a>
+                    </div>
+                    <div class="group4 g25-28">
+                      <a href="#" class="seat_controll seat25">
+                        <span>25</span>
+                      </a>
+                      <a href="#" class="seat_controll seat26">
+                        <span>26</span>
+                      </a>
+                      <a href="#" class="seat_controll seat27">
+                        <span>27</span>
+                      </a>
+                      <a href="#" class="seat_controll seat28">
+                        <span>28</span>
+                      </a>
+                    </div>
+                    <div class="group4 g29-32">
+                      <a href="#" class="seat_controll seat29">
+                        <span>29</span>
+                      </a>
+                      <a href="#" class="seat_controll seat30">
+                        <span>30</span>
+                      </a>
+                      <a href="#" class="seat_controll seat31">
+                        <span>31</span>
+                      </a>
+                      <a href="#" class="seat_controll seat32">
+                        <span>32</span>
+                      </a>
+                    </div>
+                    <div class="group4 g33-36">
+                      <a href="#" class="seat_controll seat33">
+                        <span>33</span>
+                      </a>
+                      <a href="#" class="seat_controll seat34">
+                        <span>34</span>
+                      </a>
+                      <a href="#" class="seat_controll seat35">
+                        <span>35</span>
+                      </a>
+                      <a href="#" class="seat_controll seat36">
+                        <span>36</span>
+                      </a>
+                    </div>
+                    <div class="group6 g37-42">
+                      <a href="#" class="seat_controll seat37">
+                        <span>37</span>
+                      </a>
+                      <a href="#" class="seat_controll seat38">
+                        <span>38</span>
+                      </a>
+                      <a href="#" class="seat_controll seat39">
+                        <span>39</span>
+                      </a>
+                      <a href="#" class="seat_controll seat40">
+                        <span>40</span>
+                      </a>
+                      <div class="little_space">&nbsp;</div>
+                      <a href="#" class="seat_controll seat41">
+                        <span>41</span>
+                      </a>
+                      <a href="#" class="seat_controll seat42">
+                        <span>42</span>
+                      </a>
+                    </div>
+                    <div class="group6 g43-48">
+                      <a href="#" class="seat_controll seat43">
+                        <span>43</span>
+                      </a>
+                      <a href="#" class="seat_controll seat44">
+                        <span>44</span>
+                      </a>
+                      <a href="#" class="seat_controll seat45">
+                        <span>45</span>
+                      </a>
+                      <a href="#" class="seat_controll seat46">
+                        <span>46</span>
+                      </a>
+                      <div class="little_space">&nbsp;</div>
+                      <a href="#" class="seat_controll seat47">
+                        <span>47</span>
+                      </a>
+                      <a href="#" class="seat_controll seat42">
+                        <span>48</span>
+                      </a>
+                    </div>
+                    <div class="group6 g49-54">
+                      <a href="#" class="seat_controll seat49">
+                        <span>49</span>
+                      </a>
+                      <a href="#" class="seat_controll seat50">
+                        <span>50</span>
+                      </a>
+                      <a href="#" class="seat_controll seat51">
+                        <span>51</span>
+                      </a>
+                      <a href="#" class="seat_controll seat52">
+                        <span>52</span>
+                      </a>
+                      <div class="little_space">&nbsp;</div>
+                      <a href="#" class="seat_controll seat54">
+                        <span>53</span>
+                      </a>
+                      <a href="#" class="seat_controll seat54">
+                        <span>54</span>
+                      </a>
+                    </div>
+                    <div class="group6 g55-60">
+                      <a href="#" class="seat_controll seat55">
+                        <span>55</span>
+                      </a>
+                      <a href="#" class="seat_controll seat56">
+                        <span>56</span>
+                      </a>
+                      <a href="#" class="seat_controll seat57">
+                        <span>57</span>
+                      </a>
+                      <a href="#" class="seat_controll seat58">
+                        <span>58</span>
+                      </a>
+                      <div class="little_space">&nbsp;</div>
+                      <a href="#" class="seat_controll seat59">
+                        <span>59</span>
+                      </a>
+                      <a href="#" class="seat_controll seat60">
+                        <span>60</span>
+                      </a>
+                    </div>
+                    <div class="group6 g61-66">
+                      <a href="#" class="seat_controll seat61">
+                        <span>61</span>
+                      </a>
+                      <a href="#" class="seat_controll seat62">
+                        <span>62</span>
+                      </a>
+                      <a href="#" class="seat_controll seat63">
+                        <span>63</span>
+                      </a>
+                      <a href="#" class="seat_controll seat64">
+                        <span>64</span>
+                      </a>
+                      <div class="little_space">&nbsp;</div>
+                      <a href="#" class="seat_controll seat65">
+                        <span>64</span>
+                      </a>
+                      <a href="#" class="seat_controll seat66">
+                        <span>66</span>
+                      </a>
+                    </div>
+                    <div class="group6 g67-72">
+                      <a href="#" class="seat_controll seat67">
+                        <span>67</span>
+                      </a>
+                      <a href="#" class="seat_controll seat68">
+                        <span>68</span>
+                      </a>
+                      <a href="#" class="seat_controll seat69">
+                        <span>69</span>
+                      </a>
+                      <a href="#" class="seat_controll seat70">
+                        <span>70</span>
+                      </a>
+                      <div class="little_space">&nbsp;</div>
+                      <a href="#" class="seat_controll seat71">
+                        <span>71</span>
+                      </a>
+                      <a href="#" class="seat_controll seat72">
+                        <span>72</span>
+                      </a>
+                    </div>
+                    <div class="group6 g73-78">
+                      <a href="#" class="seat_controll seat73">
+                        <span>73</span>
+                      </a>
+                      <a href="#" class="seat_controll seat74">
+                        <span>74</span>
+                      </a>
+                      <a href="#" class="seat_controll seat75">
+                        <span>75</span>
+                      </a>
+                      <a href="#" class="seat_controll seat76">
+                        <span>76</span>
+                      </a>
+                      <div class="little_space">&nbsp;</div>
+                      <a href="#" class="seat_controll seat77">
+                        <span>77</span>
+                      </a>
+                      <a href="#" class="seat_controll seat78">
+                        <span>78</span>
+                      </a>
+                    </div>
+                    <div class="group6 g79-84">
+                      <a href="#" class="seat_controll seat73">
+                        <span>79</span>
+                      </a>
+                      <a href="#" class="seat_controll seat74">
+                        <span>80</span>
+                      </a>
+                      <a href="#" class="seat_controll seat75">
+                        <span>81</span>
+                      </a>
+                      <a href="#" class="seat_controll seat76">
+                        <span>82</span>
+                      </a>
+                      <div class="little_space">&nbsp;</div>
+                      <a href="#" class="seat_controll seat77">
+                        <span>83</span>
+                      </a>
+                      <a href="#" class="seat_controll seat78">
+                        <span>84</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g85-88 ">
+                      <a href="#" class="seat_controll seat85">
+                        <span>85</span>
+                      </a>
+                      <a href="#" class="seat_controll seat86">
+                        <span>86</span>
+                      </a>
+                      <a href="#" class="seat_controll seat87">
+                        <span>87</span>
+                      </a>
+                      <a href="#" class="seat_controll seat88">
+                        <span>88</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g89-92 ">
+                      <a href="#" class="seat_controll seat89">
+                        <span>89</span>
+                      </a>
+                      <a href="#" class="seat_controll seat90">
+                        <span>90</span>
+                      </a>
+                      <a href="#" class="seat_controll seat91">
+                        <span>91</span>
+                      </a>
+                      <a href="#" class="seat_controll seat92">
+                        <span>92</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g93-96">
+                      <a href="#" class="seat_controll seat89">
+                        <span>93</span>
+                      </a>
+                      <a href="#" class="seat_controll seat90">
+                        <span>94</span>
+                      </a>
+                      <a href="#" class="seat_controll seat91">
+                        <span>95</span>
+                      </a>
+                      <a href="#" class="seat_controll seat92">
+                        <span>96</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g97-100">
+                      <a href="#" class="seat_controll seat97">
+                        <span>97</span>
+                      </a>
+                      <a href="#" class="seat_controll seat98">
+                        <span>98</span>
+                      </a>
+                      <a href="#" class="seat_controll seat99">
+                        <span>99</span>
+                      </a>
+                      <a href="#" class="seat_controll seat100">
+                        <span>100</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g101-104 ">
+                      <a href="#" class="seat_controll seat101">
+                        <span>101</span>
+                      </a>
+                      <a href="#" class="seat_controll seat102">
+                        <span>102</span>
+                      </a>
+                      <a href="#" class="seat_controll seat103">
+                        <span>103</span>
+                      </a>
+                      <a href="#" class="seat_controll seat104">
+                        <span>104</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g105-108">
+                      <a href="#" class="seat_controll seat105">
+                        <span>105</span>
+                      </a>
+                      <a href="#" class="seat_controll seat106">
+                        <span>106</span>
+                      </a>
+                      <a href="#" class="seat_controll seat107">
+                        <span>107</span>
+                      </a>
+                      <a href="#" class="seat_controll seat108">
+                        <span>108</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g109-112">
+                      <a href="#" class="seat_controll seat109">
+                        <span>109</span>
+                      </a>
+                      <a href="#" class="seat_controll seat110">
+                        <span>110</span>
+                      </a>
+                      <a href="#" class="seat_controll seat111">
+                        <span>111</span>
+                      </a>
+                      <a href="#" class="seat_controll seat112">
+                        <span>112</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g113-116 ">
+                      <a href="#" class="seat_controll seat113">
+                        <span>113</span>
+                      </a>
+                      <a href="#" class="seat_controll seat114">
+                        <span>114</span>
+                      </a>
+                      <a href="#" class="seat_controll seat115">
+                        <span>115</span>
+                      </a>
+                      <a href="#" class="seat_controll seat116">
+                        <span>116</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g117-120">
+                      <a href="#" class="seat_controll seat117">
+                        <span>117</span>
+                      </a>
+                      <a href="#" class="seat_controll seat118">
+                        <span>118</span>
+                      </a>
+                      <a href="#" class="seat_controll seat119">
+                        <span>119</span>
+                      </a>
+                      <a href="#" class="seat_controll seat120">
+                        <span>120</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g121-124">
+                      <a href="#" class="seat_controll seat121">
+                        <span>121</span>
+                      </a>
+                      <a href="#" class="seat_controll seat122">
+                        <span>122</span>
+                      </a>
+                      <a href="#" class="seat_controll seat123">
+                        <span>123</span>
+                      </a>
+                      <a href="#" class="seat_controll seat124">
+                        <span>124</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g125-128">
+                      <a href="#" class="seat_controll seat125">
+                        <span>125</span>
+                      </a>
+                      <a href="#" class="seat_controll seat126">
+                        <span>126</span>
+                      </a>
+                      <a href="#" class="seat_controll seat127">
+                        <span>127</span>
+                      </a>
+                      <a href="#" class="seat_controll seat128">
+                        <span>128</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g129-132 ">
+                      <a href="#" class="seat_controll seat113">
+                        <span>129</span>
+                      </a>
+                      <a href="#" class="seat_controll seat114">
+                        <span>130</span>
+                      </a>
+                      <a href="#" class="seat_controll seat115">
+                        <span>131</span>
+                      </a>
+                      <a href="#" class="seat_controll seat116">
+                        <span>132</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g133-136">
+                      <a href="#" class="seat_controll seat117">
+                        <span>133</span>
+                      </a>
+                      <a href="#" class="seat_controll seat118">
+                        <span>134</span>
+                      </a>
+                      <a href="#" class="seat_controll seat119">
+                        <span>135</span>
+                      </a>
+                      <a href="#" class="seat_controll seat120">
+                        <span>136</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g137-140">
+                      <a href="#" class="seat_controll seat121">
+                        <span>137</span>
+                      </a>
+                      <a href="#" class="seat_controll seat122">
+                        <span>138</span>
+                      </a>
+                      <a href="#" class="seat_controll seat123">
+                        <span>139</span>
+                      </a>
+                      <a href="#" class="seat_controll seat124">
+                        <span>140</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g141-144 ">
+                      <a href="#" class="seat_controll seat141">
+                        <span>141</span>
+                      </a>
+                      <a href="#" class="seat_controll seat142">
+                        <span>142</span>
+                      </a>
+                      <a href="#" class="seat_controll seat143">
+                        <span>143</span>
+                      </a>
+                      <a href="#" class="seat_controll seat144">
+                        <span>144</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g145-148">
+                      <a href="#" class="seat_controll seat145">
+                        <span>145</span>
+                      </a>
+                      <a href="#" class="seat_controll seat146">
+                        <span>146</span>
+                      </a>
+                      <a href="#" class="seat_controll seat147">
+                        <span>147</span>
+                      </a>
+                      <a href="#" class="seat_controll seat148">
+                        <span>148</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g149-152">
+                      <a href="#" class="seat_controll seat149">
+                        <span>149</span>
+                      </a>
+                      <a href="#" class="seat_controll seat150">
+                        <span>150</span>
+                      </a>
+                      <a href="#" class="seat_controll seat151">
+                        <span>151</span>
+                      </a>
+                      <a href="#" class="seat_controll seat152">
+                        <span>152</span>
+                      </a>
+                    </div>
+                    <div class="group2-rotate g153-154">
+                      <a href="#" class="seat_controll seat153">
+                        <span>153</span>
+                      </a>
+                      <a href="#" class="seat_controll seat154">
+                        <span>154</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g155-158">
+                      <a href="#" class="seat_controll seat155">
+                        <span>155</span>
+                      </a>
+                      <a href="#" class="seat_controll seat156">
+                        <span>156</span>
+                      </a>
+                      <a href="#" class="seat_controll seat157">
+                        <span>157</span>
+                      </a>
+                      <a href="#" class="seat_controll seat158">
+                        <span>158</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate-another g159-162">
+                      <a href="#" class="seat_controll seat159">
+                        <span>159</span>
+                      </a>
+                      <a href="#" class="seat_controll seat160">
+                        <span>160</span>
+                      </a>
+                      <a href="#" class="seat_controll seat161">
+                        <span>161</span>
+                      </a>
+                      <a href="#" class="seat_controll seat162">
+                        <span>162</span>
+                      </a>
+                    </div>
+                    <div class="group2-rotate-another g167-168">
+                      <a href="#" class="seat_controll seat167">
+                        <span>167</span>
+                      </a>
+                      <a href="#" class="seat_controll seat168">
+                        <span>168</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate-another g163-166">
+                      <a href="#" class="seat_controll seat163">
+                        <span>163</span>
+                      </a>
+                      <a href="#" class="seat_controll seat164">
+                        <span>164</span>
+                      </a>
+                      <a href="#" class="seat_controll seat165">
+                        <span>165</span>
+                      </a>
+                      <a href="#" class="seat_controll seat166">
+                        <span>166</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g169-172">
+                      <a href="#" class="seat_controll seat169">
+                        <span>169</span>
+                      </a>
+                      <a href="#" class="seat_controll seat170">
+                        <span>170</span>
+                      </a>
+                      <a href="#" class="seat_controll seat171">
+                        <span>171</span>
+                      </a>
+                      <a href="#" class="seat_controll seat172">
+                        <span>172</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g173-176">
+                      <a href="#" class="seat_controll seat173">
+                        <span>173</span>
+                      </a>
+                      <a href="#" class="seat_controll seat174">
+                        <span>174</span>
+                      </a>
+                      <a href="#" class="seat_controll seat175">
+                        <span>175</span>
+                      </a>
+                      <a href="#" class="seat_controll seat176">
+                        <span>176</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g177-180">
+                      <a href="#" class="seat_controll seat177">
+                        <span>177</span>
+                      </a>
+                      <a href="#" class="seat_controll seat178">
+                        <span>178</span>
+                      </a>
+                      <a href="#" class="seat_controll seat179">
+                        <span>179</span>
+                      </a>
+                      <a href="#" class="seat_controll seat180">
+                        <span>180</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g181-184">
+                      <a href="#" class="seat_controll seat181">
+                        <span>181</span>
+                      </a>
+                      <a href="#" class="seat_controll seat182">
+                        <span>182</span>
+                      </a>
+                      <a href="#" class="seat_controll seat183">
+                        <span>183</span>
+                      </a>
+                      <a href="#" class="seat_controll seat184">
+                        <span>184</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g185-188">
+                      <a href="#" class="seat_controll seat185">
+                        <span>185</span>
+                      </a>
+                      <a href="#" class="seat_controll seat186">
+                        <span>186</span>
+                      </a>
+                      <a href="#" class="seat_controll seat187">
+                        <span>187</span>
+                      </a>
+                      <a href="#" class="seat_controll seat188">
+                        <span>188</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g189-192">
+                      <a href="#" class="seat_controll seat189">
+                        <span>189</span>
+                      </a>
+                      <a href="#" class="seat_controll seat190">
+                        <span>190</span>
+                      </a>
+                      <a href="#" class="seat_controll seat191">
+                        <span>191</span>
+                      </a>
+                      <a href="#" class="seat_controll seat192">
+                        <span>192</span>
+                      </a>
+                    </div>
+                    <div class="group2-rotate g193-194">
+                      <a href="#" class="seat_controll seat193">
+                        <span>193</span>
+                      </a>
+                      <a href="#" class="seat_controll seat194">
+                        <span>194</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g195-198">
+                      <a href="#" class="seat_controll seat195">
+                        <span>195</span>
+                      </a>
+                      <a href="#" class="seat_controll seat196">
+                        <span>196</span>
+                      </a>
+                      <a href="#" class="seat_controll seat197">
+                        <span>197</span>
+                      </a>
+                      <a href="#" class="seat_controll seat198">
+                        <span>198</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate g199-201">
+                      <a href="#" class="seat_controll seat200" style="visibility: hidden;">
+                        <span>&nbsp;</span>
+                      </a>
+                      <a href="#" class="seat_controll seat199">
+                        <span>199</span>
+                      </a>
+                      <a href="#" class="seat_controll seat200">
+                        <span>200</span>
+                      </a>
+                      <a href="#" class="seat_controll seat201">
+                        <span>201</span>
+                      </a>
+                    </div>
+                    <div class="group4 g202-205">
+                      <a href="#" class="seat_controll seat202">
+                        <span>202</span>
+                      </a>
+                      <a href="#" class="seat_controll seat203">
+                        <span>203</span>
+                      </a>
+                      <a href="#" class="seat_controll seat204">
+                        <span>204</span>
+                      </a>
+                      <a href="#" class="seat_controll seat205">
+                        <span>205</span>
+                      </a>
+                    </div>
+                    <div class="group4 g206-209">
+                      <a href="#" class="seat_controll seat206">
+                        <span>206</span>
+                      </a>
+                      <a href="#" class="seat_controll seat207">
+                        <span>207</span>
+                      </a>
+                      <a href="#" class="seat_controll seat208">
+                        <span>208</span>
+                      </a>
+                      <a href="#" class="seat_controll seat209">
+                        <span>209</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate-another g210-213">
+                      <a href="#" class="seat_controll seat210">
+                        <span>210</span>
+                      </a>
+                      <a href="#" class="seat_controll seat211">
+                        <span>211</span>
+                      </a>
+                      <a href="#" class="seat_controll seat212">
+                        <span>212</span>
+                      </a>
+                      <a href="#" class="seat_controll seat213">
+                        <span>213</span>
+                      </a>
+                    </div>
+                    <div class="group4-rotate-another g214-217">
+                      <a href="#" class="seat_controll seat214">
+                        <span>214</span>
+                      </a>
+                      <a href="#" class="seat_controll seat215">
+                        <span>215</span>
+                      </a>
+                      <a href="#" class="seat_controll seat216">
+                        <span>216</span>
+                      </a>
+                      <a href="#" class="seat_controll seat217">
+                        <span>217</span>
+                      </a>
+                    </div>
                 </div>
-
             </div>
+            
         </div>
       </div>
 
+     <!-- Optional JavaScript; choose one of the two! -->
 
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
-
-
-    <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    -->
 </body>
 
 </html>
