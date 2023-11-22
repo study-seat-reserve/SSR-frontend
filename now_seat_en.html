@@ -33,8 +33,7 @@
             var d=NowDate.getDate();
             var h=NowDate.getHours();
             var m=NowDate.getMinutes();
-            var s=NowDate.getSeconds();
-            document.getElementById('showbox').innerHTML = 'current time&nbsp'+mon+'/'+d+'&nbsp'+h+'hour'+m+'minute'+s+'second';
+            document.getElementById('showbox').innerHTML = 'current time&nbsp'+mon+'/'+d+'&nbsp'+h+'hour'+m+'minute';
             setTimeout('ShowTime()',1000);
         }
     </script>
@@ -65,10 +64,10 @@
                 <a class="nav-link" href="#">Feedback</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Log in/sign up</a>
-              </li>
-              <li>
                 <a class="nav-link" href="now_seat.html">中文版</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Log in/sign up</a>
               </li>
             </ul>
           </div>
@@ -90,7 +89,7 @@
                   <a class="nav-link" href="searh seat_en.html">Check reservation status</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Personal reservation status</a>
+                  <a class="nav-link" href="personnal_info.html">Personal reservation status</a>
                 </li>
               </ul>
         </div>
@@ -102,7 +101,7 @@
                 <div class="col-12 col-md-8 col-lg-5 " style="text-align: center;">
                   <span class="blue-seat" >
                     <span class="ssi" style="background-color: #00c0EF;">&nbsp;</span>
-                    Available for Reservation
+                    Available
                   </span>
                   <span class="green-seat" >
                     <span class="ssi" style="background-color: green;">&nbsp;</span>
@@ -110,12 +109,12 @@
                   </span>
                   <span class="gray-seat">
                     <span class="ssi" style="background-color: gray;">&nbsp;</span>
-                    Not Available
+                    disabled
                   </span>
                 </div>
               </div>
                 <div class="seat-info">
-                    <img class="seat_background" src="/pic_data/座位背景圖.png" alt="座位背景圖">
+                    <img class="seat_background" src="pic_data/座位背景圖.png" alt="座位背景圖">
                     <div class="group4 g1-4">
                       <a href="#" class="seat_controll seat1">
                         <span>01</span>

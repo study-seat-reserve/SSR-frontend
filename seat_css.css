@@ -1,3 +1,10 @@
+.ssi{
+    width: 32px;
+    height: 32px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
 .seat-info{
     max-width: 720px;
     min-height: 720px;
