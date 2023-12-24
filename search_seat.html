@@ -61,7 +61,7 @@
                     <a class="nav-link" href="searh seat_en.html">English</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#" id="sign_button">登入/註冊</a>
+                    <a class="nav-link" href="signin.html" id="sign_button">登入/註冊</a>
                   </li>
                 </ul>
               </div>
@@ -102,18 +102,23 @@
                       不開放
                     </span>
                   </div>
-                <form action="" id="search_info" class="row" style="text-align:center;margin-bottom: 10px;">
-                    <span class="col-12 col-md-3" >
+                <form action="" id="search_info" class="row" style="text-align:center;margin-bottom: 10px; margin-left:5px; max-width: 720px;">
+                    <span class="col-12 col-md-4" style="margin-bottom: 5px;">
                         <label for="search_date" style="text-align: center;">日期</label>
-                        <input type="date" id="search_date" >
+                        <input type="date" id="search_date">
                     </span>
-                    <span class="col-12 col-md-3" >
-                        <label for="startTime" style="text-align: center;">開始時間</label>
-                        <input type="text" id="startTime" class="timepicker"  style="display: inline-block; width:130px ;text-align: center;">
+                    <span class="col-12 col-md-3" style="margin-bottom: 5px;">
+                        <select id="startTime" class="form-select form-select-sm" aria-label="Default select example" style="margin: auto; max-width:200px;">
+                          <option selected disabled>開始時間</option>
+                        </select>
                     </span>
-                    <span class="col-12 col-md-3" >
-                        <label for="endTime" style="text-align: center;">結束時間</label>
-                        <input type="text" id="endTime" class="timepicker"  style="display: inline-block; width:130px ;text-align: center;">
+                    <span class="col-12 col-md-3" style="margin-bottom: 5px;">
+                      <select id="endTime" class="form-select form-select-sm" aria-label="Default select example" style="margin: auto; max-width:200px;">
+                        <option selected disabled>結束時間</option>
+                      </select>
+                    </span>
+                    <span class="col-12 col-md-2" style="margin-bottom: 5px;">
+                      <button id="search_btn" type="button" class="btn btn-outline-secondary btn-sm">查詢</button>
                     </span>
                 </form>
                 <div class="seat-info">

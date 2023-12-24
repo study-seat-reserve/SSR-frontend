@@ -1,11 +1,23 @@
 $(document).ready(function () {
-    //var user_id=""
-    var user_id = "01057104"
-    if (user_id == "") {
-        alert("請先登入")
-        window.location.href = 'sign-in.html'
+    //判斷使否有登入
+  key=localStorage.getItem("Authorization");
+  user=localStorage.getItem("user_name");
+  console.log(key,user)
+  var user_id=user;
+    
+  if(user_id!=null){
+    $("#sign_button").text(user_id+"(登出)")
+  }
+  else{
+    $("#sign_button").text("登入/註冊")
+  }
+  $("#sign_button").click(function () {
+    if(user_id!=null){
+      localStorage.clear()
+      $("#sign_button").text("登入/註冊")
     }
-    $("#personnal_user").text(user_id)
+  })
+    
     //得到資料
     // Json{
     //     "reservations": [
@@ -18,16 +30,43 @@ $(document).ready(function () {
     //         },
     //     ]
     // }
+    let abc={
+        "reservations": [
+            {
+                "user_id": "eric",
+                "seat_id": 18,
+                "date": "2023-11-28",
+                "start_time": 140000,
+                "end_time": 170000,
+            },
+            {
+                "user_id": "eric",
+                "seat_id": 9,
+                "date": "2023-11-29",
+                "start_time": 83000,
+                "end_time": 170000,
+            }
+        ]
+    }
+    $("#personnal_user").text(abc.reservations[0].user_id)
     //fake資料
-    var date=["112/11/26","112/11/27","112/11/28","112/11/29"]
-    var start=["8:00","14:00","12:00","17:00"]
-    var end=["19:00","16:00","16:00","20:00"]
-    var seat_id=["01","02","63","191"]
+    // var date=["112/11/26","112/11/27","112/11/28","112/11/29"]
+    // var start=["8:00","14:00","12:00","17:00"]
+    // var end=["19:00","16:00","16:00","20:00"]
+    // var seat_id=["01","02","63","191"]
     for (let index = 0; index < 4; index++) {
-        $("#day"+index+"_date").text(date[index]+" ")
-        $("#day"+index+"_start").text(start[index]+" -")
-        $("#day"+index+"_end").text(end[index]+" ")
-        $("#day"+index+"_seatID").text("座位" + seat_id[index]+"")
+        $("#day"+index).css("display","none")
+    }
+    console.log(abc.reservations.length)
+    for (let index = 0; index < abc.reservations.length; index++) {
+        let start=Math.floor(abc.reservations[index].start_time/10000)+":"+Math.floor((abc.reservations[index].start_time/1000)%10)+Math.floor((abc.reservations[index].start_time/100)%10)
+        let end=Math.floor(abc.reservations[index].end_time/10000)+":"+Math.floor((abc.reservations[index].end_time/1000)%10)+Math.floor((abc.reservations[index].end_time/100)%10)
+        // console.log(start)
+        $("#day"+index).css("display","block")
+        $("#day"+index+"_date").text(abc.reservations[index].date+" "+" ")
+        $("#day"+index+"_start").text(start+" -")
+        $("#day"+index+"_end").text(end+" ")
+        $("#day"+index+"_seatID").text("座位" + abc.reservations[index].date+"")
     }
     //刪除按鈕
     // Json{
@@ -51,5 +90,7 @@ $(document).ready(function () {
         // console.log(start[$(this).attr('id')])
         // //end_time
         // console.log(end[$(this).attr('id')])
+        
+
     })
 })

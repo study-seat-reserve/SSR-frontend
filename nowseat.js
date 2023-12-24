@@ -1,5 +1,24 @@
 
 $(document).ready(function () {
+  //判斷使否有登入
+  key=localStorage.getItem("Authorization");
+  user=localStorage.getItem("user_name");
+  console.log(key,user)
+  var user_id=user;
+    
+  if(user_id!=null){
+    $("#sign_button").text(user_id+"(登出)")
+  }
+  else{
+    $("#sign_button").text("登入/註冊")
+  }
+  $("#sign_button").click(function () {
+    if(user_id!=null){
+      localStorage.clear()
+      $("#sign_button").text("登入/註冊")
+    }
+  })
+
     console.log("test")
     var NowDate=new Date();
     var mon=NowDate.getMonth();
@@ -7,71 +26,44 @@ $(document).ready(function () {
     var h=NowDate.getHours();
     var m=NowDate.getMinutes();
     //現在時間
-    console.log(NowDate)
-    //需要回傳值，先用temp
+    // console.log(NowDate)
 
+    
     $.ajax({
         method: "GET",
-        url: 'https://randomuser.me/api/'
+        url: 'http://127.0.0.1:8002/api/show_status' 
     })
     .done(function (msg) {
-        console.log(msg)
+        //  console.log(msg)
+        let now_data=JSON.parse(msg);
+        // console.log(now_data.seats[0].seat_id)
+        // console.log(now_data.seats[0].status)
+        //status
+        // Available,
+        // Unavailable,
+        // Borrowed,
+        //這迴圈跑所有座位該有的值
+        for (let i = 0; i <216; i++) {
+          let j=i+1
+          
+          switch (now_data.seats[i].status) {
+              case "Available": {
+                  $(".seat"+j).css("background-color","#00c0EF")
+                break; // 如果這裡沒有 break，則會繼續跑後面的 statement（不需要判斷有沒有符合條件）
+              }
+              case "Unavailable": {
+                  $(".seat"+j).css("background-color","green")
+                break;
+              }
+              case "Borrowed":{
+                  $(".seat"+j).css("background-color","#808080")
+              }
+              default: {
+                break;
+              }
+            }
+        }
     })
-    //拿到資料
-    // {
-    //     "user_id":"0296232f-bef6-4e9c-ad7c-50f61d43dbfb",
-    //     "seat_id":1,
-    //     "date":"2023-11-27",
-    //     "start_time":180000,
-    //     "end_time":190000
-    // }
-
-    //判斷使否有登入
-    var user_id=""
-    
-    if(user_id==""){
-      $("#sign_button").attr("href","sign-in.html")
-    }
-    else{
-      $("#sign_button").text(user_id+"(登出)")
-      $("#sign_button").attr("href","#")
-    }
-    $("#sign_button").click(function () {
-      if(user_id!=""){
-        user_id=""
-        $("#sign_button").text("登入/註冊")
-        $("#sign_button").attr("href","sign-in.html")
-      }
-    })
-
-
-    //status
-    // Available,
-    // Unavailable,
-    // Borrowed,
-    var data=["Available","Unavailable","Borrowed"]
-    //這迴圈跑所有座位該有的值
-    for (let i = 1; i <= 217; i++) {
-        temp=Math.floor(Math.random()*3)
-        switch (data[temp]) {
-            case "Available": {
-                $(".seat"+i).css("background-color","#00c0EF")
-              break; // 如果這裡沒有 break，則會繼續跑後面的 statement（不需要判斷有沒有符合條件）
-            }
-            case "Unavailable": {
-                $(".seat"+i).css("background-color","green")
-              break;
-            }
-            case "Borrowed":{
-                $(".seat"+i).css("background-color","#808080")
-            }
-            default: {
-              break;
-            }
-          }
-      }
-
-      localStorage.clear()
     //座位href設定
     $(".seat_controll").attr("href","single_seat_info.html")
     //找出點擊的座位
