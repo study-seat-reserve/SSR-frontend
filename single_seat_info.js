@@ -135,18 +135,14 @@ $(document).ready(function () {
       d1=MaxDate.getDate();
       //表格上的日期
       $("#day"+index).text(m1+"/"+d1)
-      let single_date=new Date(y1+'-'+m1+'-'+d1)
-
-      let eco_data=now_seat+'/'+single_date.getTime()
+      let single_date_start=new Date(y1+'-'+m1+'-'+d1)
+      let single_date_end=new Date(y1+'-'+m1+'-'+d1+"T23:00:00")
+      let eco_data=now_seat+'/'+single_date_start.getTime()/1000+'/'+single_date_end.getTime()/1000
       console.log(index+" "+"/api/show_reservations/"+eco_data)
       $.ajax({
         method: "GET",
         // <date>/<seat_id>
-        url: "/api/show_reservations/",
-        data: { 
-            "date":  y+'-'+m+'-'+d,
-            "seat_id": now_seat  
-        }
+        url: "/api/show_reservations/"+eco_data,
       })
         .done(function( msg ) {
           console.log(msg)
@@ -165,6 +161,67 @@ $(document).ready(function () {
         })  
         
     }
+    //預約時間設定
+    //日期設定
+    //設定最小今天
+    var NowDate=new Date();
+    var y=NowDate.getFullYear();
+    var m=NowDate.getMonth()+1;
+    var d=NowDate.getDate();
+    var yy=NowDate.getFullYear();
+    var mm=NowDate.getMonth()+1;
+    var dd=NowDate.getDate();
+    $("#search_date").attr("min",y+'-'+m+'-'+d)
+    //設定最大三天後
+    function addDaysToDate(date, days) {
+        var res = new Date(date);
+        res.setDate(res.getDate() + days);
+        return res;
+    }
+    var tmpDate = new Date();  // Augest 20, 2020
+    console.log(addDaysToDate(tmpDate, 3));
+    var MaxDate=addDaysToDate(tmpDate, 3);
+    y=MaxDate.getFullYear();
+    m=MaxDate.getMonth()+1;
+    d=MaxDate.getDate();
+    $("#search_date").attr("max",y+'-'+m+'-'+d)
+    //開始時間設定
+    $("#check_startTime").append("<option>8:10</option>")
+    $("#check_startTime").append("<option>8:30</option>")
+    let starth=8,startm=30;
+    while(starth!=20 || startm!=30){
+      if(startm==0){
+        startm=30;
+      }
+      else{
+        starth++;
+        startm=0;
+      }
+      if (startm==0) {
+        $("#check_startTime").append("<option>"+starth+":00</option>")
+      }
+      else{
+        $("#check_startTime").append("<option>"+starth+":30</option>")
+      }
+    }
+    //結束時間設定
+    $("#check_endTime").append("<option>8:30</option>")
+    let endh=8,endm=30;
+    while(endh!=20 || endm!=30){
+      if(endm==0){
+        endm=30;
+      }
+      else{
+        endh++;
+        endm=0;
+      }
+      if (endm==0) {
+        $("#check_endTime").append("<option>"+endh+":00</option>")
+      }
+      else{
+        $("#check_endTime").append("<option>"+endh+":30</option>")
+      }
+    }
     //當確認預約被按下
     $("#check_btn").click(function () {
         //先post資料
@@ -172,17 +229,21 @@ $(document).ready(function () {
         // Start_time:int, parseInt($("#startTime").val())
         // End_time:int, parseInt($("#endTime").val())
         let reg={
-          "seat_id": 87,
-          "date": "2023-12-22",
-          "start_time": 120000,
-          "end_time": 180000,
-          "user_name": user
+          "seat_id": null,
+          "start_time": null,
+          "end_time":null,
         }
         
-        console.log(reg.type)
+        console.log($("#check_endTime").val())
+        let temp=$("#search_date").val()
+        reg["seat_id"]=$("#single_seat_id").text();
+        reg["start_time"]=Date.parse(temp+"T"+$("#check_startTime").val())/1000
+        reg["end_time"]=Date.parse(temp+"T"+$("#check_endTime").val())/1000
+        
+        console.log(reg)
           $.ajax({
             headers: {
-              'Authorization': key
+              'Authorization':'Bearer '+ key
             },
             type: "POST",
             url: "/api/reserve",

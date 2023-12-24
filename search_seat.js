@@ -126,18 +126,21 @@ $(document).ready(function () {
         alert("請選擇日期")
       }
       
-      let start_time=new Date(temp+'T'+select_s+":00") 
-      let end_time=new Date(temp+'T'+select_e+":00") 
+      let start_time=Date.parse(temp+'T'+select_s+":00") 
+      let end_time=Date.parse(temp+'T'+select_e+":00") 
       
       // let eco=+start_time.getTime()+"/"+end_time.getTime()
+      console.log(temp+'T'+select_s+":00"+"Z")
+      console.log(temp+'T'+select_e+":00"+"Z")
       console.log(start_time)
       console.log(end_time)
 
       $.ajax({
           method: "GET",
           // <date>/<start_time>/<end_time>
-          url: "/api/show_status/",
-          data:JSON.stringify({"start_time": start_time, "end_time": end_time,})
+          url: "/api/show_status/"+start_time/1000+"/"+end_time/1000,
+          // contentType: 'application/json',
+          // data:JSON.stringify({"start_time": start_time, "end_time": end_time,})
         })
           .done(function( msg ) {
             alert("查詢成功")
