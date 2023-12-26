@@ -23,8 +23,8 @@ $(document).ready(function(){
           .fail(function (xhr, status, error) {
             // 處理後端回傳的錯誤
             var errorMessage = xhr.responseText || "Unknown error";
-            console.log(status)
-            alert("Fail");
+            console.log(status,error)
+            alert("登入失敗"+error);
           })
         //alert("stop")
     })

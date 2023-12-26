@@ -5,7 +5,7 @@ $(document).ready(function () {
     //判斷使否有登入
     key=localStorage.getItem("Authorization");
     user=localStorage.getItem("user_name");
-    console.log(key,user)
+    // console.log(key,user)
     var user_id=user;
       
     if(user_id!=null){
@@ -21,7 +21,7 @@ $(document).ready(function () {
       }
     })
     //處理座位代號
-    console.log(localStorage)
+    // console.log(localStorage)
     // console.log($("#single_seat_id").text())
     // console.log(localStorage.getItem("now_single"))
     $("#single_seat_id").text(localStorage.getItem("now_single"))
@@ -38,10 +38,10 @@ $(document).ready(function () {
         let newRow = $("<tr>");
         // 創建新的單元格，並添加內容和 id
         let cell1 = $("<td>").text(set_hour+":10");
-        let cell2 = $("<td>").text("").attr("id","day0+"+set_hour*100);
-        let cell3 = $("<td>").text("").attr("id","day1+"+set_hour*100);
-        let cell4 = $("<td>").text("").attr("id","day2+"+set_hour*100);
-        let cell5 = $("<td>").text('').attr("id","day3+"+set_hour*100);
+        let cell2 = $("<td>").text("").attr("id","day0"+set_hour*100);
+        let cell3 = $("<td>").text("").attr("id","day1"+set_hour*100);
+        let cell4 = $("<td>").text("").attr("id","day2"+set_hour*100);
+        let cell5 = $("<td>").text('').attr("id","day3"+set_hour*100);
         // 將單元格添加到新行
         newRow.append(cell1, cell2,cell3,cell4,cell5);
         // 將新行添加到 tbody
@@ -52,10 +52,10 @@ $(document).ready(function () {
         let newRow = $("<tr>");
         // 創建新的單元格，並添加內容和 id
         let cell1 = $("<td>").text(set_hour+":00");
-        let cell2 = $("<td>").text("").attr("id","day0+"+set_hour*100);
-        let cell3 = $("<td>").text("").attr("id","day1+"+set_hour*100);
-        let cell4 = $("<td>").text("").attr("id","day2+"+set_hour*100);
-        let cell5 = $("<td>").text('').attr("id","day3+"+set_hour*100);
+        let cell2 = $("<td>").text("").attr("id","day0"+set_hour*100);
+        let cell3 = $("<td>").text("").attr("id","day1"+set_hour*100);
+        let cell4 = $("<td>").text("").attr("id","day2"+set_hour*100);
+        let cell5 = $("<td>").text('').attr("id","day3"+set_hour*100);
         // 將單元格添加到新行
         newRow.append(cell1, cell2,cell3,cell4,cell5);
         // 將新行添加到 tbody
@@ -66,10 +66,10 @@ $(document).ready(function () {
         let newRow = $("<tr>");
         // 創建新的單元格，並添加內容和 id
         let cell1 = $("<td>").text(set_hour+":30");
-        let cell2 = $("<td>").text("").attr("id","day0+"+set_hour*100+set_min);
-        let cell3 = $("<td>").text("").attr("id","day1+"+set_hour*100+set_min);
-        let cell4 = $("<td>").text("").attr("id","day2+"+set_hour*100+set_min);
-        let cell5 = $("<td>").text('').attr("id","day3+"+set_hour*100+set_min);
+        let cell2 = $("<td>").text("").attr("id","day0"+set_hour+set_min);
+        let cell3 = $("<td>").text("").attr("id","day1"+set_hour+set_min);
+        let cell4 = $("<td>").text("").attr("id","day2"+set_hour+set_min);
+        let cell5 = $("<td>").text('').attr("id","day3"+set_hour+set_min);
         // 將單元格添加到新行
         newRow.append(cell1, cell2,cell3,cell4,cell5);
         // 將新行添加到 tbody
@@ -81,10 +81,10 @@ $(document).ready(function () {
         let newRow = $("<tr>");
         // 創建新的單元格，並添加內容和 id
         let cell1 = $("<td>").text("20:50");
-        let cell2 = $("<td>").text("").attr("id","day0+2050");
-        let cell3 = $("<td>").text("").attr("id","day1+2050");
-        let cell4 = $("<td>").text("").attr("id","day2+2050");
-        let cell5 = $("<td>").text('').attr("id","day3+2050");
+        let cell2 = $("<td>").text("").attr("id","day02050");
+        let cell3 = $("<td>").text("").attr("id","day12050");
+        let cell4 = $("<td>").text("").attr("id","day22050");
+        let cell5 = $("<td>").text('').attr("id","day32050");
         // 將單元格添加到新行
         newRow.append(cell1, cell2,cell3,cell4,cell5);
         // 將新行添加到 tbody
@@ -138,28 +138,64 @@ $(document).ready(function () {
       let single_date_start=new Date(y1+'-'+m1+'-'+d1)
       let single_date_end=new Date(y1+'-'+m1+'-'+d1+"T23:00:00")
       let eco_data=now_seat+'/'+single_date_start.getTime()/1000+'/'+single_date_end.getTime()/1000
-      console.log(index+" "+"/api/show_reservations/"+eco_data)
+      // console.log(index+" "+"/api/show_reservations/"+eco_data)
       $.ajax({
         method: "GET",
         // <date>/<seat_id>
         url: "/api/show_reservations/"+eco_data,
       })
         .done(function( msg ) {
-          console.log(msg)
+          // console.log(msg)
           if(msg.length!=2){
+            
             //array就是我們要用的
             let array=JSON.parse(msg)
             for (let index = 0; index < array.length; index++) {
-              let s=array[index][0].toString();
-              let e=array[index][1].toString();
-              console.log(s,e)
-              let ss=s.slice(0, 2) + ":" + s.slice(2,4);
-              let ee=e.slice(0, 2) + ":" + e.slice(2,4);
-              console.log(ss,ee)
+              let s=array[index][0];
+              let e=array[index][1];
+              // console.log("stop"+index)
+              
+              var date1 = new Date(s*1000);
+              var date2 = new Date(e*1000);
+              var month1 = date1.getMonth() + 1; // 月份是从0开始的，需要加1
+              var day1 = date1.getDate();
+              var hour1= date1.getHours();
+              var min1= date1.getMinutes();
+              var d1=month1+"/"+day1
+              var hour2= date2.getHours();
+              var min2= date2.getMinutes();
+              // console.log(date1,date2)
+              
+              if(min1==0) min1="00"
+              if(min2==0) min2="00"
+              var time1=hour1+":"+min1
+              var time2=hour2+":"+min2
+              for (let i = 0; i < 4; i++) {
+                // console.log(i+"out")
+                
+                if($("#day"+i).text()==d1){
+                  // console.log(i+"in")
+                  // console.log($("#day"+i).text()===d1)
+                  // console.log(d1+"ok")
+                  
+                  while (time1!=time2) {
+                    $("#day"+i+hour1+min1).css("background-color", "green");
+                    time1=hour1+":"+min1
+                    if(min1=="00") min1="30"
+                    else {
+                      min1="00"
+                      hour1++
+                    }
+                    // console.log("#day"+i+hour1+min1)
+                    
+                    $("#day"+i+hour1+min1).css("background-color", "green");
+                    // console.log(d1,time1)
+                  }
+                }
+              }
             }
           }
         })  
-        
     }
     //預約時間設定
     //日期設定
@@ -179,7 +215,7 @@ $(document).ready(function () {
         return res;
     }
     var tmpDate = new Date();  // Augest 20, 2020
-    console.log(addDaysToDate(tmpDate, 3));
+    // console.log(addDaysToDate(tmpDate, 3));
     var MaxDate=addDaysToDate(tmpDate, 3);
     y=MaxDate.getFullYear();
     m=MaxDate.getMonth()+1;
@@ -224,6 +260,13 @@ $(document).ready(function () {
     }
     //當確認預約被按下
     $("#check_btn").click(function () {
+
+        // console.log(key)
+        if(key==null){
+          alert("請先登入")
+          return
+          // window.location.href = "signin.html";
+        }
         //先post資料
         // Date:String, y+'-'+m+'-'+d
         // Start_time:int, parseInt($("#startTime").val())
@@ -235,10 +278,24 @@ $(document).ready(function () {
         }
         
         console.log($("#check_endTime").val())
+        
         let temp=$("#search_date").val()
-        reg["seat_id"]=$("#single_seat_id").text();
-        reg["start_time"]=Date.parse(temp+"T"+$("#check_startTime").val())/1000
-        reg["end_time"]=Date.parse(temp+"T"+$("#check_endTime").val())/1000
+        let z1,z2
+        if($("#check_startTime").val().length==4){
+          z1="0"
+        }
+        else{
+          z1=""
+        }
+        if($("#check_endTime").val().length==4){
+          z2="0"
+        }
+        else{
+          z2=""
+        }
+        reg["seat_id"]=parseInt($("#single_seat_id").text());
+        reg["start_time"]=parseInt(Date.parse(temp+"T"+z1+$("#check_startTime").val())/1000)
+        reg["end_time"]=parseInt(Date.parse(temp+"T"+z2+$("#check_endTime").val())/1000)
         
         console.log(reg)
           $.ajax({
@@ -252,10 +309,12 @@ $(document).ready(function () {
           })
           .done(function(msg) {
             //已經成功預約
-            alert('Data Saved: ' + msg);
+            console.log(reg)
+            alert("已成功預約"+msg);
+            location.reload()
           })
             //失敗處理
           .fail(function(msg) {
-            alert('Failed: ' + msg);});
+            alert('此時段不可預約或當天已有預約');});
     })
 })

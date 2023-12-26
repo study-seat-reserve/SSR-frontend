@@ -3,7 +3,7 @@ $(document).ready(function () {
   //判斷使否有登入
   key=localStorage.getItem("Authorization");
   user=localStorage.getItem("user_name");
-  console.log(key,user)
+  // console.log(key,user)
   var user_id=user;
     
   if(user_id!=null){
@@ -19,22 +19,22 @@ $(document).ready(function () {
     }
   })
 
-    console.log("test")
-    var NowDate=new Date();
-    var mon=NowDate.getMonth();
-    var d=NowDate.getDate();
-    var h=NowDate.getHours();
-    var m=NowDate.getMinutes();
+    
+    // var NowDate=new Date();
+    // var mon=NowDate.getMonth();
+    // var d=NowDate.getDate();
+    // var h=NowDate.getHours();
+    // var m=NowDate.getMinutes();
     //現在時間
     // console.log(NowDate)
 
     
     $.ajax({
         method: "GET",
-        url: 'http://127.0.0.1:8002/api/show_status' 
+        url: '/api/show_status' 
     })
     .done(function (msg) {
-        //  console.log(msg)
+          // console.log(msg)
         let now_data=JSON.parse(msg);
         // console.log(now_data.seats[0].seat_id)
         // console.log(now_data.seats[0].status)

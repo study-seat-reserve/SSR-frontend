@@ -37,38 +37,38 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary my-navbar">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">
-                <img class="header-logo" src="https://li.ntou.edu.tw/var/file/29/1029/img/1207/logo.png" alt="ntou logo">
-                海大全興書院-自習室預約系統
-              </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse my-nav-other" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="https://li.ntou.edu.tw/">海大圖資處首頁</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">使用說明</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">意見信箱</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="searh seat_en.html">English</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="sign-in.html">登入/註冊</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-    </header>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary my-navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img class="header-logo" src="https://li.ntou.edu.tw/var/file/29/1029/img/1207/logo.png" alt="ntou logo">
+            海大全興書院-自習室預約系統
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse my-nav-other" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="https://li.ntou.edu.tw/">海大圖資處首頁</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">使用說明</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">意見信箱</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="single_seat_info_en.html">English</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="signin.html" id="sign_button">登入/註冊</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>
 
     <div class="container">
         <div class="row">
@@ -90,11 +90,12 @@
             </div>
             <div class="col-12 col-md-9" >
                 <div>
-                    <h2>使用者: <span id="personnal_user">張三</span>  預約資訊</h2> 
+                    <h2><span id="personnal_user"></span>  預約資訊</h2> 
                 </div>
                 <div>
                     <ol class="list-group list-group-numbered">
                         <li class="list-group-item" id="day0">
+                            <span id="day0_year"></span>
                             <span id="day0_date"></span>
                             <span id="day0_start"></span>
                             <span id="day0_end"></span>
@@ -103,6 +104,7 @@
                             <button type="button" class="btn btn-danger r_delete" id="0">刪除預約</button>
                         </li>
                         <li class="list-group-item" id="day1">
+                            <span id="day1_year"></span>
                             <span id="day1_date"></span>
                             <span id="day1_start"></span>
                             <span id="day1_end"></span>
@@ -110,6 +112,7 @@
                             <button type="button" class="btn btn-danger r_delete" id="1">刪除座位</button>
                         </li>
                         <li class="list-group-item" id="day2">
+                            <span id="day2_year"></span>
                             <span id="day2_date"></span>
                             <span id="day2_start"></span>
                             <span id="day2_end"></span>
@@ -117,6 +120,7 @@
                             <button type="button" class="btn btn-danger r_delete" id="2">刪除座位</button>
                         </li>
                         <li class="list-group-item" id="day3">
+                          <span id="day3_year"></span>
                           <span id="day3_date"></span>
                           <span id="day3_start"></span>
                           <span id="day3_end"></span>

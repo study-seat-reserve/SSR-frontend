@@ -4,7 +4,7 @@ $(document).ready(function () {
     //判斷使否有登入
     key=localStorage.getItem("Authorization");
     user=localStorage.getItem("user_name");
-    console.log(key,user)
+    // console.log(key,user)
     var user_id=user;
       
     if(user_id!=null){
@@ -37,7 +37,7 @@ $(document).ready(function () {
         return res;
     }
     var tmpDate = new Date();  // Augest 20, 2020
-    console.log(addDaysToDate(tmpDate, 3));
+    // console.log(addDaysToDate(tmpDate, 3));
     var MaxDate=addDaysToDate(tmpDate, 3);
     y=MaxDate.getFullYear();
     m=MaxDate.getMonth()+1;
@@ -91,8 +91,23 @@ $(document).ready(function () {
       select_e = $(this).val(); 
     })
    $("#search_btn").click(function(){
+      let temp=$("#search_date").val()
+
+      if(select_s==null){
+        alert("請選擇開始時間")
+        return
+      }
+      else if(select_e==null){
+        alert("請選擇結束時間")
+        return
+      }
+      else if(temp==""){
+        alert("請選擇日期")
+        return
+      }
+      
       let s=0,e=0,j=0
-      console.log(select_s)
+      
       for (let i = select_s.length-1; i >=0; i--) {
         if(select_s[i]!=":"){
           s+=select_s[i]*(10**j)
@@ -108,7 +123,7 @@ $(document).ready(function () {
           j++
         }
       }
-      console.log(s,e)
+      // console.log(s,e)
       // var e=Date.parse(select_e);
       // console.log(s)
       // console.log(e)
@@ -116,24 +131,29 @@ $(document).ready(function () {
       if(s>=e){
         alert("開始時間不得大於結束時間")
       }
-      console.log("set_seat")
+      // console.log("set_seat")
       //先post資料
       // Date:String, y+'-'+m+'-'+d
       // Start_time:int, parseInt($("#startTime").val())
       // End_time:int, parseInt($("#endTime").val())
-      let temp=$("#search_date").val()
-      if(temp==""){
-        alert("請選擇日期")
-      }
       
+      
+
+      select_s=select_s.split(':').map(function (part) {
+        return part.padStart(2, '0');
+      }).join(':');
+      select_e=select_e.split(':').map(function (part) {
+        return part.padStart(2, '0');
+      }).join(':');
+      // console.log(select_s,select_e)
       let start_time=Date.parse(temp+'T'+select_s+":00") 
       let end_time=Date.parse(temp+'T'+select_e+":00") 
       
       // let eco=+start_time.getTime()+"/"+end_time.getTime()
-      console.log(temp+'T'+select_s+":00"+"Z")
-      console.log(temp+'T'+select_e+":00"+"Z")
-      console.log(start_time)
-      console.log(end_time)
+      // console.log(temp+'T'+select_s+":00"+"Z")
+      // console.log(temp+'T'+select_e+":00"+"Z")
+      // console.log(start_time)
+      // console.log(end_time)
 
       $.ajax({
           method: "GET",
@@ -142,37 +162,42 @@ $(document).ready(function () {
           // contentType: 'application/json',
           // data:JSON.stringify({"start_time": start_time, "end_time": end_time,})
         })
-          .done(function( msg ) {
-            alert("查詢成功")
-            console.log(msg)
-            let now_data=JSON.parse(msg);
-      // console.log(now_data.seats[0].seat_id)
-      // console.log(now_data.seats[0].status)
-      //status
-      // Available,
-      // Unavailable,
-      // Borrowed,
-      //這迴圈跑所有座位該有的值
-      for (let i = 0; i <217 ; i++) {
-          let j=i+1;
-        switch (now_data.seats[i].status) {
-            case "Available": {
-                $(".seat"+j).css("background-color","#00c0EF")
-              break; // 如果這裡沒有 break，則會繼續跑後面的 statement（不需要判斷有沒有符合條件）
-            }
-            case "Unavailable": {
-                $(".seat"+j).css("background-color","#808080")
-              break;
-            }
-            case "Borrowed":{
-                $(".seat"+j).css("background-color","green")
-            }
-            default: {
-              break;
-            }
+      .done(function( msg ) {
+          alert("查詢成功")
+          // console.log(msg)
+          let now_data=JSON.parse(msg);
+        
+    // console.log(now_data.seats[0].seat_id)
+    // console.log(now_data.seats[0].status)
+    //status
+    // Available,
+    // Unavailable,
+    // Borrowed,
+    //這迴圈跑所有座位該有的值
+    for (let i = 0; i <217 ; i++) {
+        let j=i+1;
+      switch (now_data.seats[i].status) {
+          case "Available": {
+              $(".seat"+j).css("background-color","#00c0EF")
+            break; // 如果這裡沒有 break，則會繼續跑後面的 statement（不需要判斷有沒有符合條件）
           }
-      }
-    });
+          case "Unavailable": {
+              $(".seat"+j).css("background-color","#808080")
+            break;
+          }
+          case "Borrowed":{
+              $(".seat"+j).css("background-color","green")
+          }
+          default: {
+            break;
+          }
+        }
+    }
+      })
+      .fail(function (error) {
+        alert("查詢失敗")
+      })
+    
     
 
    })
