@@ -10,11 +10,25 @@ $(document).ready(function () {
         let name=$("#user-name").val()
         let password=$("#password").val()
         let c=$("#confirm-p").val()
-        // console.log(mail+"\n"+name+"\n"+password+"\n"+c)
-        //let user_name = &data.user_name;
-          // let password = &data.password;
-          // let email = &data.email;
-        $.ajax({
+        var tmp=1;
+        if(name.length > 20){
+            alert("不可輸入字數大於20的名字");
+            tmp=0;
+        }
+        if(password.length<8){
+          alert("不可輸入字數小於8的密碼");
+          tmp=0;
+        }
+        if(password.length>20){
+          alert("不可輸入字數大於20的密碼");
+          tmp=0;
+        }
+        if(password!==c){
+          alert("密碼與確認密碼不同");
+          tmp=0;
+        }
+        if(tmp == 1){
+          $.ajax({
             type: "POST",
             url: "/api/register",
             contentType: 'application/json',
@@ -36,6 +50,6 @@ $(document).ready(function () {
           console.log(status,error)
           alert("註冊失敗"+error);
         });
-        
+        }
     })
 })
