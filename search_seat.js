@@ -206,7 +206,7 @@ $(document).ready(function () {
     //找出點擊的座位
     $(".seat_controll").click(function () {
     var temp_seatID= $(this).text();
-    console.log(temp_seatID.trim());
+    // console.log(temp_seatID.trim());
     localStorage.setItem("now_single", temp_seatID.trim())
     })
 })

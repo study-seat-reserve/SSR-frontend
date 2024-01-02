@@ -43,7 +43,7 @@ $(document).ready(function () {
         // Unavailable,
         // Borrowed,
         //這迴圈跑所有座位該有的值
-        for (let i = 0; i <216; i++) {
+        for (let i = 0; i <217; i++) {
           let j=i+1
           
           switch (now_data.seats[i].status) {
@@ -51,13 +51,14 @@ $(document).ready(function () {
                   $(".seat"+j).css("background-color","#00c0EF")
                 break; // 如果這裡沒有 break，則會繼續跑後面的 statement（不需要判斷有沒有符合條件）
               }
-              case "Unavailable": {
+              case "Borrowed": {
                   $(".seat"+j).css("background-color","green")
                 break;
               }
-              case "Borrowed":{
+              case "Unavailable":{
                   $(".seat"+j).css("background-color","#808080")
               }
+              
               default: {
                 break;
               }
