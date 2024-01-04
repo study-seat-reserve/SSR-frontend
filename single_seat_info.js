@@ -38,10 +38,10 @@ $(document).ready(function () {
         let newRow = $("<tr>");
         // 創建新的單元格，並添加內容和 id
         let cell1 = $("<td>").text(set_hour+":10");
-        let cell2 = $("<td>").text("").attr("id","day0"+set_hour*100);
-        let cell3 = $("<td>").text("").attr("id","day1"+set_hour*100);
-        let cell4 = $("<td>").text("").attr("id","day2"+set_hour*100);
-        let cell5 = $("<td>").text('').attr("id","day3"+set_hour*100);
+        let cell2 = $("<td>").text("").attr("id","day0"+(set_hour*100+10));
+        let cell3 = $("<td>").text("").attr("id","day1"+(set_hour*100+10));
+        let cell4 = $("<td>").text("").attr("id","day2"+(set_hour*100+10));
+        let cell5 = $("<td>").text('').attr("id","day3"+(set_hour*100+10));
         // 將單元格添加到新行
         newRow.append(cell1, cell2,cell3,cell4,cell5);
         // 將新行添加到 tbody
@@ -133,14 +133,21 @@ $(document).ready(function () {
       y1=MaxDate.getFullYear();
       m1=MaxDate.getMonth()+1;
       d1=MaxDate.getDate();
+      var end=addDaysToDate(MaxDate, 1);
+      // console.log(MaxDate)
+      // console.log(end)
+      y2=end.getFullYear();
+      m2=end.getMonth()+1;
+      d2=end.getDate();
       //表格上的日期
       $("#day"+index).text(m1+"/"+d1)
       let single_date_start=new Date(y1+'-'+m1+'-'+d1)
-      let single_date_end=new Date(y1+'-'+m1+'-'+d1+"T23:00:00")
+      let single_date_end=new Date(y2+'-'+m2+'-'+d2)
       let eco_data=now_seat+'/'+single_date_start.getTime()/1000+'/'+single_date_end.getTime()/1000
       // console.log(index+" "+"/api/show_reservations/"+eco_data)
+      
       $.ajax({
-        method: "GET",
+        type: "GET",
         // <date>/<seat_id>
         url: "/api/show_reservations/"+eco_data,
       })
@@ -177,19 +184,22 @@ $(document).ready(function () {
                   // console.log(i+"in")
                   // console.log($("#day"+i).text()===d1)
                   // console.log(d1+"ok")
-                  
+                  console.log(time2)
                   while (time1!=time2) {
+                    // console.log("#day"+i+hour1+min1)
                     $("#day"+i+hour1+min1).css("background-color", "green");
                     time1=hour1+":"+min1
                     if(min1=="00") min1="30"
+                    else if(min1=="10") min1="30"
+                    else if(min1=="30" && hour1=="20") min1="50"
                     else {
                       min1="00"
                       hour1++
                     }
                     // console.log("#day"+i+hour1+min1)
                     
-                    $("#day"+i+hour1+min1).css("background-color", "green");
-                    // console.log(d1,time1)
+                    // $("#day"+i+hour1+min1).css("background-color", "green");
+                    // // console.log(d1,time1)
                   }
                 }
               }
@@ -207,6 +217,8 @@ $(document).ready(function () {
     var yy=NowDate.getFullYear();
     var mm=NowDate.getMonth()+1;
     var dd=NowDate.getDate();
+    m = m < 10 ? "0" + m : "" + m;
+    d = d < 10 ? "0" + d : "" + d;
     $("#search_date").attr("min",y+'-'+m+'-'+d)
     //設定最大三天後
     function addDaysToDate(date, days) {
@@ -220,6 +232,8 @@ $(document).ready(function () {
     y=MaxDate.getFullYear();
     m=MaxDate.getMonth()+1;
     d=MaxDate.getDate();
+    m = m < 10 ? "0" + m : "" + m;
+    d = d < 10 ? "0" + d : "" + d;
     $("#search_date").attr("max",y+'-'+m+'-'+d)
     //開始時間設定
     $("#check_startTime").append("<option>8:10</option>")
@@ -258,6 +272,7 @@ $(document).ready(function () {
         $("#check_endTime").append("<option>"+endh+":30</option>")
       }
     }
+    $("#check_endTime").append("<option>20:50</option>")
     //當確認預約被按下
     $("#check_btn").click(function () {
 
@@ -277,7 +292,7 @@ $(document).ready(function () {
           "end_time":null,
         }
         
-        console.log($("#check_endTime").val())
+        // console.log($("#check_endTime").val())
         
         let temp=$("#search_date").val()
         let z1,z2
@@ -293,11 +308,12 @@ $(document).ready(function () {
         else{
           z2=""
         }
+        // console.log($("#check_startTime").val())
         reg["seat_id"]=parseInt($("#single_seat_id").text());
         reg["start_time"]=parseInt(Date.parse(temp+"T"+z1+$("#check_startTime").val())/1000)
         reg["end_time"]=parseInt(Date.parse(temp+"T"+z2+$("#check_endTime").val())/1000)
         
-        console.log(reg)
+        // console.log(reg)
           $.ajax({
             headers: {
               'Authorization':'Bearer '+ key
@@ -309,7 +325,7 @@ $(document).ready(function () {
           })
           .done(function(msg) {
             //已經成功預約
-            console.log(reg)
+            // console.log(reg)
             alert("已成功預約"+msg);
             location.reload()
           })

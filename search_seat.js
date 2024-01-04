@@ -29,6 +29,9 @@ $(document).ready(function () {
     var yy=NowDate.getFullYear();
     var mm=NowDate.getMonth()+1;
     var dd=NowDate.getDate();
+    m = m < 10 ? "0" + m : "" + m;
+    d = d < 10 ? "0" + d : "" + d;
+    // console.log(y+'-'+m+'-'+d)
     $("#search_date").attr("min",y+'-'+m+'-'+d)
     //設定最大三天後
     function addDaysToDate(date, days) {
@@ -42,6 +45,8 @@ $(document).ready(function () {
     y=MaxDate.getFullYear();
     m=MaxDate.getMonth()+1;
     d=MaxDate.getDate();
+    m = m < 10 ? "0" + m : "" + m;
+    d = d < 10 ? "0" + d : "" + d;
     $("#search_date").attr("max",y+'-'+m+'-'+d)
 
     //開始時間設定
@@ -195,7 +200,7 @@ $(document).ready(function () {
     }
       })
       .fail(function (error) {
-        alert("查詢失敗")
+        alert("查詢失敗，請注意查詢時間是否已過")
       })
     
     
